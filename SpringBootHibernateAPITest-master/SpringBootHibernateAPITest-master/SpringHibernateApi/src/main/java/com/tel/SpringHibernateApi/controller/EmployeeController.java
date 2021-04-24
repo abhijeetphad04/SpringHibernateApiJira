@@ -37,6 +37,7 @@ public class EmployeeController {
 
 	void get(){
 		System.out.println("In get");
+		System.out.println("In getEmployees");
 	}
 //2
 	@PostMapping("/addemployee")
