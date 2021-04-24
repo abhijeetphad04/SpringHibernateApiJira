@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tel.SpringHibernateApi.model.Country;
 import com.tel.SpringHibernateApi.model.Employee;
+import com.tel.SpringHibernateApi.model.Manager;
 
 @Repository
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -151,6 +152,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		Transaction transaction = currentSession.beginTransaction();
 		currentSession.saveOrUpdate(country);
 		transaction.commit();
+	}
+	
+
+	@Override
+	public void registerManager(Manager manager) {
+		Session curentSession = entityManager.unwrap(Session.class);
+		Transaction transaction = curentSession.beginTransaction();
+		curentSession.save(manager);
+		transaction.commit();
+		System.out.println("register");
 	}
 
 }

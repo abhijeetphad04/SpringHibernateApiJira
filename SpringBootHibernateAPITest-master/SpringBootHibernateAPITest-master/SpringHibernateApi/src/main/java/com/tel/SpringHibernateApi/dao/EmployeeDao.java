@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.tel.SpringHibernateApi.model.Country;
 import com.tel.SpringHibernateApi.model.Employee;
+import com.tel.SpringHibernateApi.model.Manager;
 
 
 
@@ -35,5 +36,7 @@ public interface EmployeeDao {
 	public List<Employee> getEmployeeByName(String name);
 	
 	public void updateCountry(Country country);
+	
+	public void registerManager(Manager manager);
 }
 

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tel.SpringHibernateApi.model.Country;
 import com.tel.SpringHibernateApi.model.Employee;
 import com.tel.SpringHibernateApi.model.EmployeeUI;
+import com.tel.SpringHibernateApi.model.Manager;
 import com.tel.SpringHibernateApi.service.EmployeeServiceImpl;
 
 @RestController
@@ -133,7 +134,12 @@ System.out.println("Delete by id");
 	public String updateCountries(@RequestBody Country country) {
 		System.out.println("In UpdateCointries");
 		employeeServiceImpl.updateCountry(country);
-
 		return "Country updated successfully.";
+	}
+	
+	@PostMapping("/manager")
+	public String registerManager(@RequestBody Manager manager) {
+		employeeServiceImpl.registerManager(manager);
+		return "registered successfully";
 	}
 }
