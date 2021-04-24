@@ -34,6 +34,9 @@ public class EmployeeController {
 		return employeeServiceImpl.findAll();
 	}
 
+	void get(){
+		System.out.println("In get");
+	}
 //2
 	@PostMapping("/addemployee")
 	public String save(@RequestBody EmployeeUI employeeUI) {
