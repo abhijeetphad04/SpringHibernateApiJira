@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tel.SpringHibernateApi.model.Country;
 import com.tel.SpringHibernateApi.model.Employee;
 import com.tel.SpringHibernateApi.model.EmployeeUI;
+import com.tel.SpringHibernateApi.model.LoginModel;
 import com.tel.SpringHibernateApi.model.Manager;
 import com.tel.SpringHibernateApi.service.EmployeeServiceImpl;
 
@@ -141,5 +142,10 @@ System.out.println("Delete by id");
 	public String registerManager(@RequestBody Manager manager) {
 		employeeServiceImpl.registerManager(manager);
 		return "registered successfully";
+	}
+	
+	@GetMapping("/login")
+	public Manager login(@RequestBody Manager manager) {
+		return employeeServiceImpl.login(manager);	
 	}
 }

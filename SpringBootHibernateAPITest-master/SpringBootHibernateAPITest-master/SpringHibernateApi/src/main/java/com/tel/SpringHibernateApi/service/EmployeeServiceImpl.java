@@ -9,6 +9,7 @@ import com.tel.SpringHibernateApi.dao.EmployeeDaoImpl;
 import com.tel.SpringHibernateApi.model.Country;
 import com.tel.SpringHibernateApi.model.Employee;
 import com.tel.SpringHibernateApi.model.EmployeeUI;
+import com.tel.SpringHibernateApi.model.LoginModel;
 import com.tel.SpringHibernateApi.model.Manager;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -95,6 +96,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public void registerManager(Manager manager) {
 		employeeDaoImpl.registerManager(manager);
+	}
+
+	@Override
+	public Manager login(Manager manager) {
+		return employeeDaoImpl.login(manager);
 	}
 
 }

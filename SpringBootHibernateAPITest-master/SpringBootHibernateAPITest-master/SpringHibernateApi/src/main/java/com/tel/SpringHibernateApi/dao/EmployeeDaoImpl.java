@@ -10,9 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.tel.SpringHibernateApi.model.Country;
 import com.tel.SpringHibernateApi.model.Employee;
+import com.tel.SpringHibernateApi.model.LoginModel;
 import com.tel.SpringHibernateApi.model.Manager;
 
 @Repository
@@ -64,23 +64,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public List<Employee> findByStatus(String status) {
 		Session currentSession = entityManager.unwrap(Session.class);
-
 		Query<Employee> query = currentSession.createQuery("from Employee where status=:status");
 		query.setParameter("status", status);
-
 		List<Employee> employees = query.getResultList();
-
 		return employees;
 	}
 
 	@Override
 	public List<Country> findAllCountries() {
 		Session currentSession = entityManager.unwrap(Session.class);
-
 		Query<Country> query = currentSession.createQuery("from Country", Country.class);
-
 		List<Country> countries = query.getResultList();
-
 		return countries;
 	}
 
@@ -163,5 +157,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		transaction.commit();
 		System.out.println("register");
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Manager login(Manager manager) {
+		Session currentSession = entityManager.unwrap(Session.class);
+//		String email = manager.getEmail();
+//		String password = manager.getPassword();
+		Query<Manager> query = currentSession.createQuery("from Manager where password=:password_ui and email=:email_ui");
+		query.setParameter("email_ui", manager.getEmail());
+		query.setParameter("password_ui", manager.getPassword());
+		Manager manager1 = query.getSingleResult();
+		return manager1;
+	}
 }
